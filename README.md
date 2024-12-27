@@ -19,4 +19,4 @@ Open source Hinode AI source code (Name is Hinode Better, but currently name is 
 **GPT2-Medium** by OpenAI
 
 ## Versions (Hugging Face)
-- [0.1](https://huggingface.co/DiamondGotCat/Hinode-AI-0.1) (Beta)
+- [0.1](https://huggingface.co/DiamondGotCat/Hinode-AI-0.1) (Beta of v1)
