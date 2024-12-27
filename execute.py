@@ -15,11 +15,11 @@ prompt = ""
 def myPrint(content):
     console.print(Markdown(f"{content}"))
 
+myPrint("| _//q to quit, _//c to continue generation. |")
+
 while True:
 
     try:
-
-        myPrint("| _//q to quit, _//c to continue generation. |")
         Input = input("_/")
 
         if Input == "/q":
