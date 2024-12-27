@@ -3,11 +3,9 @@ Documents/Hinode.ai/Normal via 🐍 v3.11.11
 ❯ python execute.py
 | _//q to quit, _//c to continue generation. |                                                                                                                                                             
 _/What is Xcode?
-Xcode is a development environment for iOS and Android that allows developers to create and share apps quickly and easily.                                                                                 
-| _//q to quit, _//c to continue generation. |                                                                                                                                                             
+Xcode is a development environment for iOS and Android that allows developers to create and share apps quickly and easily.                                                                                                                                                                                                                                         
 _/Who made it?
-It was developed by Apple and was the first major programming environment to include Swift programming language.                                                                                           
-| _//q to quit, _//c to continue generation. |                                                                                                                                                             
+It was developed by Apple and was the first major programming environment to include Swift programming language.                                                                                                                                                                                                                                               
 _/
 ```
 
