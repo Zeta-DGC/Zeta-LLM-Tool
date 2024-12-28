@@ -3,6 +3,10 @@
 
 ---
 
+**License CHANGED:** Dec 29, 2024
+
+---
+
 ```
 Documents/Hinode.ai/Normal via 🐍 v3.11.11 
 ❯ python execute.py
