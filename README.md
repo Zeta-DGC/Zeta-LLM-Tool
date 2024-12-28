@@ -1,3 +1,8 @@
+
+![Hinode AI](https://github.com/user-attachments/assets/e1380c83-016e-479e-9f1d-9ff8659a1e3a)
+
+---
+
 ```
 Documents/Hinode.ai/Normal via 🐍 v3.11.11 
 ❯ python execute.py
@@ -20,3 +25,7 @@ Open source Hinode AI source code (Name is Hinode Better, but currently name is 
 
 ## Versions (Hugging Face)
 - [0.1](https://huggingface.co/DiamondGotCat/Hinode-AI-0.1) (Beta of v1)
+
+---
+
+Thank you for Reading!
