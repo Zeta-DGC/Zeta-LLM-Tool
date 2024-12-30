@@ -1,35 +1,21 @@
-DGC License
+MIT License
 
 Copyright (c) 2024 DiamondGotCat
 
-This project, its derivative works, and their resulting products (hereinafter referred to as "the Project, etc.") may be used and redistributed under this DGC License (hereinafter referred to as "this License").  
-This License sets forth the terms and conditions for the use and redistribution of the Project, etc., and anyone who obtains or uses it is deemed to have accepted the terms of this License.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-1. Redistribution and Use
-1-1. The Project, etc., may be freely used, modified, derived, and redistributed.  
-1-2. Redistribution must apply this License or a compatible open license. The compatibility is at the discretion of the distributor.  
-1-3. There is no obligation to notify the original author or the original project when redistributing.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-2. Placement of the LICENSE File
-- The LICENSE file containing this License document must be placed directly under the root folder of the project.  
-- When redistributing, the LICENSE file must be included and prominently bundled.
-
-3. Coexistence with Other Licenses
-- Components or libraries under other licenses may be incorporated into the Project, etc., provided that their respective license terms are followed.  
-- However, when redistributing, all requirements of such licenses must be met.
-
-4. Copyright Notice
-4-1. A copyright notice is mandatory. The "yyyy name" at the beginning of the file must be replaced with the appropriate year and copyright holder’s name when distributed.  
-4-2. Apart from the year and name, the text may be modified or supplemented as long as it does not undermine the intent of the License.
-
-5. Disclaimer and Limitation of Liability
-5-1. The Project, etc., provided under this License comes with no warranties, expressed or implied.  
-5-2. Neither the copyright holder nor distributors shall be held liable for any damages or issues arising from the use or redistribution of the Project, etc.
-
-6. Regions of Use
-6-1. If any part or all of this License conflicts with the laws or regulations of the user’s country or region, the user is prohibited from using the Project, etc.  
-6-2. However, if local laws take precedence over this License, usage is permitted within the limits allowed by such laws. Users are responsible for legal interpretations.
-
-7. Modifications to the License
-- This License may be revised at the discretion of the copyright holder.  
-- Upon publication of a revised version, users may choose to adopt the revised version.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
