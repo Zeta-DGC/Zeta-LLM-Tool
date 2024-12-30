@@ -3,9 +3,9 @@
 
 ---
 
-**License:** DGC License
+**License:** MIT License
 
-**License CHANGED:** Dec 29, 2024
+**License CHANGED:** Dec 32, 2024
 
 ---
 
