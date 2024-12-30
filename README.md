@@ -1,5 +1,5 @@
 
-![Hinode AI](https://github.com/user-attachments/assets/e1380c83-016e-479e-9f1d-9ff8659a1e3a)
+![HINODE AI COM](https://github.com/user-attachments/assets/a1e37084-a2ab-48cb-a88e-3e125940f19f)
 
 ---
 
