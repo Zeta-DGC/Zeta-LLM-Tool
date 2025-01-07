@@ -42,7 +42,7 @@ def main():
         config = GPT2Config()
         model = GPT2LMHeadModel(config)
         tokenizer = GPT2Tokenizer.from_pretrained('openai-community/gpt2')
-    elif mode == "v1":
+    elif mode == "v2":
         tokenizer = GPT2Tokenizer.from_pretrained('openai-community/gpt2')
         model = GPT2LMHeadModel.from_pretrained('openai-community/gpt2')
     elif mode == "v2-medium":
@@ -70,7 +70,7 @@ def main():
     for conversation in data:
         convo_text = ""
         for message in conversation:
-            role = message['role'] # system / user / assistant
+            role = message['role'] # input / output
             content = message['content']
             convo_text += f"<|{role}|>{content}<|end|>"
         conversations.append(convo_text)
