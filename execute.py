@@ -15,12 +15,12 @@ prompt = ""
 def myPrint(content):
     console.print(Markdown(f"{content}"))
 
-myPrint("| _//q to quit, _//c to continue generation. |")
+myPrint("| /q to quit, /c to continue generation. |")
 
 while True:
 
     try:
-        Input = input("_/")
+        Input = input(">>>")
 
         if Input == "/q":
             break
@@ -43,7 +43,7 @@ while True:
             myPrint(f"{result}")
 
         else:
-            prompt += "<|user|>" + Input + "<|end|>"
+            prompt += "<|input|>" + Input + "<|end|>"
             inputs = tokenizer(prompt, return_tensors="pt")
 
             outputs = model.generate(
@@ -55,10 +55,13 @@ while True:
             )
 
             generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
-            result = generated_text[len(prompt):].split("<|")[0]
-            prompt += result
+            result1 = generated_text[len(prompt):].split("<|")[0]
+            result2 = generated_text[len(prompt):].split("<|")[1]
+            prompt += result1 + result2
 
-            myPrint(f"{result}")
+            myPrint(f"{result1}")
+            myPrint("---")
+            myPrint(f"{result2}")
 
     except KeyboardInterrupt:
         break
