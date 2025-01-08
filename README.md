@@ -35,4 +35,11 @@ Open source Hinode AI source code (Name is Hinode Better, but currently name is 
 
 ---
 
-Thank you for Reading!
+Thank you for reading this.
+
+Actually, Hinode-AI is a personal project. There are still parts that haven't been developed yet.
+
+If possible, please help in one of the following ways:
+1. Simple: Please give it a star.
+2. For programmers/engineers: Help with code fixes or testing.
+3. For those who can support Hinode-AI's future: Publish the trained models on HuggingFace. However, please include information about the Hinode-AI project. For more details, see [Help with Trained Model](Help/Training.md).
