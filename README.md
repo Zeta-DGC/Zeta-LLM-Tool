@@ -14,7 +14,7 @@ It was developed by Apple and was the first major programming environment to inc
 _/
 ```
 
-# Hinode-AI (Beta)
+# Hinode-AI
 Full Open-source LLM
 - You can Create LLM.
 - You can Edit LLM.
