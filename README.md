@@ -3,12 +3,6 @@
 
 ---
 
-**License:** MIT License
-
-**License CHANGED:** Dec 32, 2024
-
----
-
 ```
 Documents/Hinode.ai/Normal via 🐍 v3.11.11 
 ❯ python execute.py
@@ -21,7 +15,10 @@ _/
 ```
 
 # Hinode-AI (Beta)
-Open source Hinode AI source code (Name is Hinode Better, but currently name is Hinode Nature)
+Full Open-source LLM
+- You can Create LLM.
+- You can Edit LLM.
+- You can Use LLM.
 
 ## Based Dataset
 - **[OpenO1-SFT](https://huggingface.co/datasets/O1-OPEN/OpenO1-SFT)** by OpenO1 Team
