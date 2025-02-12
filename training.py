@@ -34,54 +34,44 @@ class ConversationDataset(Dataset):
 
 def main():
 
-    # トレーニングモードの選択
-    mode = Prompt.ask("Based GPT", choices=["d", "default", "empty", "v2", "v2-medium", "trained"])
+    model_save_path = "./trained_model"
 
-    # モデルとトークナイザーのロード
-    if mode == "empty":
+    mode = Prompt.ask("Select base model (enter `gpt2` to use Not Pre-trained Model)", choices=["gpt2", "gpt2-small", "gpt2-medium", "trained_model"], default="gpt2-medium")
+
+    if mode == "gpt2":
         config = GPT2Config()
         model = GPT2LMHeadModel(config)
         tokenizer = GPT2Tokenizer.from_pretrained('openai-community/gpt2')
-    elif mode == "v2":
+    elif mode == "gpt2-small":
         tokenizer = GPT2Tokenizer.from_pretrained('openai-community/gpt2')
         model = GPT2LMHeadModel.from_pretrained('openai-community/gpt2')
-    elif mode == "v2-medium":
+    elif mode == "gpt2-medium":
         tokenizer = GPT2Tokenizer.from_pretrained('openai-community/gpt2-medium')
         model = GPT2LMHeadModel.from_pretrained('openai-community/gpt2-medium')
-    elif mode == "trained":
+    elif mode == "trained_model":
         tokenizer = GPT2Tokenizer.from_pretrained('./trained_model')
         model = GPT2LMHeadModel.from_pretrained('./trained_model')
-    else:
-        tokenizer = GPT2Tokenizer.from_pretrained('openai-community/gpt2-medium')
-        model = GPT2LMHeadModel.from_pretrained('openai-community/gpt2-medium')
 
-    # パディングトークンの設定
     tokenizer.pad_token = tokenizer.eos_token
 
-    # データのパスを取得
     path = Prompt.ask("Path")
 
-    # JSONデータの読み込み
     with open(path, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
-    # 各会話を連結したテキストとして処理
     conversations = []
     for conversation in data:
         convo_text = ""
         for message in conversation:
-            role = message['role'] # input / output
+            role = message['role']
             content = message['content']
             convo_text += f"<|{role}|>{content}<|end|>"
         conversations.append(convo_text)
 
-    # データフレームの作成
     df = pd.DataFrame({'conversation': conversations})
 
-    # データセットの準備
     train_dataset = ConversationDataset(df, tokenizer)
 
-    # トレーニング引数の設定
     training_args = TrainingArguments(
         output_dir='./results',
         num_train_epochs=3,
@@ -96,18 +86,14 @@ def main():
         save_total_limit=2,
     )
 
-    # トレーナーの初期化
     trainer = Trainer(
         model=model,
         args=training_args,
         train_dataset=train_dataset,
     )
 
-    # トレーニングの実行
     trainer.train()
-
-    # モデルとトークナイザーの保存
-    model_save_path = "./trained_model"
+    
     model.save_pretrained(model_save_path)
     tokenizer.save_pretrained(model_save_path)
 
