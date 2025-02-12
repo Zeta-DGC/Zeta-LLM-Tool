@@ -24,12 +24,18 @@ Fully Open-source LLM Tool.
 - **[Azuki AI](https://github.com/DiamondGotCat/Azuki.ai) 2n** by Me(DiamondGotCat)
 
 ## Tokenizer
-- **GPT-2** (Default)
-- **Custom** (You Need Edit All Script)
+- **GPT-2** (for OpenAI's Models)
+- **Custom** (You Need Edit **Script** and **Base Model**)
 
 ## Selectable Base Models
-- **Empty**
-- **GPT-2(Normal, Medium)** by OpenAI
+
+### OpenAI
+OpenAI's Latest Public Model.
+We can't use GPT3.0 and later...
+
+- **GPT2** Start from Scratch (Tokenizer: GPT2)
+- **GPT2-Small** Start from Small Data (Tokenizer: GPT2)
+- **GPT2-Medium** Start from Medium Data (Tokenizer: GPT2)
 
 ## Pre-trained Models (Hugging Face)
 - [0.1](https://huggingface.co/DiamondGotCat/Hinode-AI-0.1): Using GPT-2 Tokenizer, GPT-2 Medium, Azuki AI 2n Dateset to Learning.
