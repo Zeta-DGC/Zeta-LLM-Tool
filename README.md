@@ -24,7 +24,7 @@ Fully Open-source LLM Tool.
 - **[Azuki AI](https://github.com/DiamondGotCat/Azuki.ai) 2n** by Me(DiamondGotCat)
 
 ## Tokenizer
-- **GPT-2** (for OpenAI's Models)
+- **GPT2** (for OpenAI's Models)
 - **Custom** (You Need Edit **Script** and **Base Model**)
 
 ## Selectable Base Models
