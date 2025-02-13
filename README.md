@@ -8,6 +8,13 @@
 
 # Hinode-AI
 Fully Open-source LLM Tool
+
+1. Select Pre-trained Model👐
+2. Select Dataset🧠
+3. Wait🕰️
+4. Successfully Created Your Own LLM✨
+
+## Scripts
 - **training.py:** Learning using Azuki-Formatted Dataset
 - **execute.py:** Run Learned Model (You Need Move Model Folder to ./trained-model)
 
