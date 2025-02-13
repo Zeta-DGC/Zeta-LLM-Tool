@@ -1,18 +1,10 @@
+> [!TIP]
+> Now you can use a variety of popular models other than OpenAI's GPT2✨
 
-![HINODE AI COM](https://github.com/user-attachments/assets/a1e37084-a2ab-48cb-a88e-3e125940f19f)
+> [!IMPORTANT]
+> This is **Not LLM**. This is **Just** LLM **Tool**.
 
 ---
-
-```
-Documents/Hinode.ai/Normal via 🐍 v3.11.11 
-❯ python execute.py
-| /q to quit, /c to continue generation. |                                                                                                                                                             
->>>What is Xcode?
-Xcode is a development environment for iOS and Android that allows developers to create and share apps quickly and easily.                                                                                                                                                                                                                                         
->>>Who made it?
-It was developed by Apple and was the first major programming environment to include Swift programming language.                                                                                                                                                                                                                                               
->>>
-```
 
 # Hinode-AI
 Fully Open-source LLM Tool.
