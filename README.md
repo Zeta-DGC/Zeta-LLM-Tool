@@ -7,7 +7,7 @@
 ---
 
 # Hinode-AI
-Fully Open-source LLM Tool.
+Fully Open-source LLM Tool
 - **training.py:** Learning using Azuki-Formatted Dataset
 - **execute.py:** Run Learned Model (You Need Move Model Folder to ./trained-model)
 
