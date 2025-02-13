@@ -6,13 +6,33 @@
 
 ---
 
-# Hinode-AI
+# Hinode-AI - Easily create your own LLM
 Fully Open-source LLM Tool
 
 1. Select Pre-trained Model👐
 2. Select Dataset🧠
 3. Wait🕰️
 4. Successfully Created Your Own LLM✨
+
+## How to use
+
+### Install
+1. Install Git and Git-LFS
+2. Clone This Repository (Example: `git clone https://github.com/DiamondGotCat/Hinode-AI.git`)
+3. Check and Install Python and PIP (Recommend: Miniconda)
+4. Install Requiments using PIP (Example: `pip install pandas transformers torch rich`)
+
+### Training
+1. Run training.py using Python
+2. Answer Selection
+3. Wait
+4. Done
+
+### Test
+1. Run execute.py using Python
+2. If Loaded, then Enter Prompt
+3. Get Answer
+4. Enter `/q` to Exit Chat
 
 ## Scripts
 - **training.py:** Learning using Azuki-Formatted Dataset
