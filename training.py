@@ -45,7 +45,7 @@ def main():
 
     if maker == "openai":
 
-        model_id = Prompt.ask("Hinode-AI> OpenAI> Model ID (Select gpt2 to Making from Scratch)", choices=["gpt2", "gpt2-small", "gpt2-medium"], default="gpt2-small")
+        model_id = Prompt.ask("Hinode-AI> OpenAI> Model ID (Select gpt2 to Making from Scratch)", choices=["gpt2", "gpt2-small", "gpt2-medium", "gpt2-large", "gpt2-xl"], default="gpt2-small")
 
         if model_id == "gpt2":
             config = GPT2Config()
