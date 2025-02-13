@@ -1,5 +1,5 @@
 import pandas as pd
-from transformers import GPT2Config, AutoTokenizer, AutoModelForCausalLM, Trainer, TrainingArguments
+from transformers import GPT2LMHeadModel, GPT2Config, AutoTokenizer, AutoModelForCausalLM, Trainer, TrainingArguments
 import torch
 from torch.utils.data import Dataset
 import json
@@ -57,6 +57,12 @@ def main():
         elif model_id == "gpt2-medium":
             tokenizer = AutoTokenizer.from_pretrained('openai-community/gpt2-medium')
             model = AutoModelForCausalLM.from_pretrained('openai-community/gpt2-medium')
+        elif model_id == "gpt2-large":
+            tokenizer = AutoTokenizer.from_pretrained('openai-community/gpt2-large')
+            model = AutoModelForCausalLM.from_pretrained('openai-community/gpt2-large')
+        elif model_id == "gpt2-xl":
+            tokenizer = AutoTokenizer.from_pretrained('openai-community/gpt2-xl')
+            model = AutoModelForCausalLM.from_pretrained('openai-community/gpt2-xl')
 
     elif maker == "google":
 
@@ -218,7 +224,7 @@ def main():
 
     elif maker == "alibaba":
 
-        model_id = Prompt.ask("Hinode-AI> Alibaba Cloud> Model ID", choices=["qwen"], default="qwen")
+        model_id = Prompt.ask("Hinode-AI> Alibaba Cloud> Model ID", choices=["qwen", "qwen1.5"], default="qwen")
 
         if model_id == "qwen":
 
