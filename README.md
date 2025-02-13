@@ -31,7 +31,7 @@ Fully Open-source LLM Tool
 
 ## Google
 
-**NOTE: Permission Required in Hugging Face**
+**NOTE: Permission Required on Hugging Face**
 
 - **gemma**  
   - **Size 2b:**  
@@ -60,7 +60,7 @@ Fully Open-source LLM Tool
     - Tokenizer/Model: `google/gemma-2-27b`
 
 ## Meta
-**NOTE: Permission Required in Hugging Face**
+**NOTE: Permission Required on Hugging Face**
 
 - **llama2**  
   - **Size 7b:**  
