@@ -1,11 +1,11 @@
 import torch
-from transformers import GPT2Tokenizer, GPT2LMHeadModel
+from transformers import AutoTokenizer, AutoModelForCausalLM
 from rich.console import Console
 from rich.markdown import Markdown
 
 model_save_path = "./trained_model"
-tokenizer = GPT2Tokenizer.from_pretrained(model_save_path)
-model = GPT2LMHeadModel.from_pretrained(model_save_path)
+tokenizer = AutoTokenizer.from_pretrained(model_save_path)
+model = AutoModelForCausalLM.from_pretrained(model_save_path)
 console = Console()
 
 if tokenizer.pad_token is None:
