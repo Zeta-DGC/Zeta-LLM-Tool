@@ -35,12 +35,12 @@ Fully Open-source LLM Tool
 4. Enter `/q` to Exit Chat
 
 ## Scripts
-- **training.py:** Learning using Azuki-Formatted Dataset
+- **training.py:** Learning using Zeta-Formatted Dataset
 - **execute.py:** Run Learned Model (You Need Move Model Folder to ./trained-model)
 
 ## Built-in Dataset
 - (Need Git-LFS to Clone This) **[OpenO1-SFT](https://huggingface.co/datasets/O1-OPEN/OpenO1-SFT)** by OpenO1 Team **I converted to Azuki-Formatted Dataset.**
-- **[Azuki AI](https://github.com/DiamondGotCat/Azuki.ai) 2n** by Me(DiamondGotCat)
+- **Zeta-Classic 2n** by DiamondGotCat
 
 ## Selectable Base Models
 
