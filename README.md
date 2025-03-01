@@ -2,7 +2,7 @@
 > Now you can use a variety of popular models other than OpenAI's GPT2✨
 
 > [!IMPORTANT]
-> This is **Not LLM**. This is **Just** LLM **Tool**.
+> Main Repository: [Zeta](https://github.com/DiamondGotCat/Zeta)
 
 ---
 
