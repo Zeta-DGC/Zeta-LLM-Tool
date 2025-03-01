@@ -6,7 +6,7 @@
 
 ---
 
-# Hinode-AI - Easily create your own LLM
+# Zeta-Tool - Easily create your own LLM
 Fully Open-source LLM Tool
 
 1. Select Pre-trained Model👐
@@ -18,7 +18,7 @@ Fully Open-source LLM Tool
 
 ### Install
 1. Install Git and Git-LFS
-2. Clone This Repository (Example: `git clone https://github.com/DiamondGotCat/Hinode-AI.git`)
+2. Clone This Repository (Example: `git clone https://github.com/DiamondGotCat/Zeta-Tool.git`)
 3. Check and Install Python and PIP (Recommend: Miniconda)
 4. Install Requiments using PIP (Example: `pip install pandas transformers torch rich`)
 
@@ -171,9 +171,9 @@ Fully Open-source LLM Tool
 
 Thank you for reading this.
 
-Actually, Hinode-AI is a personal project. There are still parts that haven't been developed yet.
+Actually, Zeta-Tool is a personal project. There are still parts that haven't been developed yet.
 
 If possible, please help in one of the following ways:
 1. Simple: Please give it a star.
 2. For programmers/engineers: Help with code fixes or testing.
-3. For those who can support Hinode-AI's future: Publish the trained models on HuggingFace. However, please include information about the Hinode-AI project. For more details, see [Help with Trained Model](Help/Training.md).
+3. For those who can support Zeta-Tool's future: Publish the trained models on HuggingFace. However, please include information about the Zeta-Tool project. For more details, see [Help with Trained Model](Help/Training.md).
