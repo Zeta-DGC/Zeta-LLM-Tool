@@ -43,7 +43,7 @@ while True:
             myPrint(f"{result}")
 
         else:
-            prompt += "<|input|>" + Input + "<|end|>"
+            prompt += "<USER>" + Input + "</USER>"
             inputs = tokenizer(prompt, return_tensors="pt")
 
             outputs = model.generate(

@@ -34,14 +34,14 @@ class ConversationDataset(Dataset):
 
 def main():
 
-    print("Hinode-AI")
+    print("Zeta-Tool")
     print("    You can Create LLM from Other LLM")
     print("----------")
     print("")
 
     model_save_path = "./trained_model"
 
-    maker = Prompt.ask("Hinode-AI> Maker ID", choices=["openai", "google", "meta", "alibaba", "trained_model"], default="openai")
+    maker = Prompt.ask("Hinode-AI> Maker ID", choices=["openai", "google", "meta", "alibaba", "local"], default="openai")
 
     if maker == "openai":
 
@@ -274,9 +274,10 @@ def main():
                 tokenizer = AutoTokenizer.from_pretrained('Qwen/Qwen1.5-72B')
                 model = AutoModelForCausalLM.from_pretrained('Qwen/Qwen1.5-72B')
 
-    elif maker == "trained_model":
-        tokenizer = AutoTokenizer.from_pretrained('./trained_model')
-        model = AutoModelForCausalLM.from_pretrained('./trained_model')
+    elif maker == "local":
+        trained_model_folder = Prompt.ask("Hinode-AI> Local> Folder Path", default="./trained_model")
+        tokenizer = AutoTokenizer.from_pretrained(trained_model_folder)
+        model = AutoModelForCausalLM.from_pretrained(trained_model_folder)
 
     tokenizer.pad_token = tokenizer.eos_token
 
@@ -289,9 +290,9 @@ def main():
     for conversation in data:
         convo_text = ""
         for message in conversation:
-            role = message['role']
-            content = message['content']
-            convo_text += f"<|{role}|>{content}<|end|>"
+            role = str(message['role'])
+            content = str(message['content'])
+            convo_text += f"<{role.upper()}>{content}</{role.upper()}>"
         conversations.append(convo_text)
 
     df = pd.DataFrame({'conversation': conversations})
