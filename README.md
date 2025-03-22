@@ -175,5 +175,5 @@ Actually, Zeta-Tool is a personal project. There are still parts that haven't be
 
 If possible, please help in one of the following ways:
 1. Simple: Please give it a star.
-2. For programmers/engineers: Help with code fixes or testing.
+2. For programmers/engineers: Help with code fixes or testing. (See [Ideas](Idea.md))
 3. For those who can support Zeta-Tool's future: Publish the trained models on HuggingFace. However, please include information about the Zeta-Tool project. For more details, see [Help with Trained Model](Help/Training.md).
