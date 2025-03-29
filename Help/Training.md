@@ -19,12 +19,18 @@ Thus, using a secondary PC is recommended.
 
 ---
 
-### 1. Ensure Python Is Installed
+### 1. Ensure Python and Dependencies Is Installed
 
 If Python is not installed, the easiest method is to use **Anaconda** or **Miniconda**.  
 For advanced users, **Pyenv** can also be used on Linux or macOS.  
 
 We recommend Python versions **3.10** or **3.11** for stability.
+
+If Dependencies of This Project are not Installed, Please Install.
+Example:
+```
+pip3 install pandas transformers torch rich
+```
 
 ---
 
@@ -56,10 +62,10 @@ Zeta-Tool includes the following datasets as of this writing:
 
 Here is a table summarizing the characteristics of the included datasets:
 
-| Dataset Name          | Characteristics                                                                                | Recommended Base Model | Estimated Training Time   | Notes                                                                                     | Dataset Path                     |
-|-----------------------|------------------------------------------------------------------------------------------------|------------------------|---------------------------|------------------------------------------------------------------------------------------|-----------------------------------|
-| **OpenO1**            | Published by the OpenO1 team on Hugging Face.<br> Includes reasoning processes for better answers.<br> High information density. | openai-community/gpt2 (GPT-2 Small) | Long (~12 hours)          | May yield high-quality answers.<br> Training time tends to be long due to high data volume. | `data_templates/OpenO1-SFT.json` |
-| **Azuki 2n**          | Created for version 2n of the Azuki.ai project.<br> Lower answer quality than Zeta-Tool.       | openai-community/gpt2-large (GPT-2 Large) | Moderate (~30 min–2 hrs)  | May lack information density, so v2-medium or higher is recommended.                     | `data_templates/azuki-2n.json`   |
+| Dataset Name | Characteristics | Base Model | Training Time | Notes | Path |
+|--------------|-----------------|------------|----------------|-------|------|
+| **OpenO1** | Published by the OpenO1 team on Hugging Face.<br> Includes reasoning processes for better answers.<br> High information density. | openai-community/gpt2 (GPT-2 Small) | Long (~12 hours) | May yield high-quality answers.<br> Training time tends to be long due to high data volume. | `data_templates/OpenO1-SFT.json` |
+| **Azuki 2n** | Created for version 2n of the Azuki.ai project.<br> Lower answer quality than Zeta-Tool. | openai-community/gpt2-large (GPT-2 Large) | Moderate (~30 min–2 hrs)  | May lack information density, so v2-medium or higher is recommended. | `data_templates/azuki-2n.json` |
 
 ---
 
@@ -70,7 +76,15 @@ The final model will be saved in the `trained_model` folder.
 
 ---
 
-### 5. Upload Your Model
+### 5. Test Your Model (Optional)
+
+Once training is complete, use `execute.py` to interact with your model.
+
+```bash
+python3 execute.py
+```
+
+### 6. Upload Your Model
 
 Finally, upload the contents of the `trained_model` folder to your own account as a model.  
 Include the following details in the description:  
