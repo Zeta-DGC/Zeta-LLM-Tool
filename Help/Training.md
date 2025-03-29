@@ -39,6 +39,8 @@ Clone this repository using the **Git command**, **GitHub CLI**, or a GUI tool.
 The most time-consuming step is training the model.  
 To make this easier, a `training.py` script is located in the root directory.
 
+💡 Note: If you do not have access to a GPU, it is still possible to fine-tune small models using CPU-only machines. However, this is significantly slower and may require reducing model size and batch size.
+
 #### Training Options
 
 After launching `training.py`, you will be prompted to make a selection.
