@@ -77,3 +77,5 @@ Include the following details in the description:
 - Information about Zeta-Tool  
 - The base model used  
 - The name of the dataset used
+
+💡 Example Model Name: `azuki-2n-gpt2-large-remix`
