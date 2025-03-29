@@ -3,6 +3,7 @@ from transformers import GPT2LMHeadModel, GPT2Config, AutoTokenizer, AutoModelFo
 import torch
 from torch.utils.data import Dataset
 import json
+from rich import print
 from rich.prompt import Prompt
 
 class ConversationDataset(Dataset):
@@ -41,11 +42,11 @@ def main():
 
     model_save_path = "./trained_model"
 
-    maker = Prompt.ask("Hinode-AI> Maker ID", choices=["openai", "google", "meta", "alibaba", "local"], default="openai")
+    maker = Prompt.ask("Zeta-Tool> Maker ID", choices=["openai", "google", "meta", "alibaba", "local", "custom"], default="openai")
 
     if maker == "openai":
 
-        model_id = Prompt.ask("Hinode-AI> OpenAI> Model ID (Select gpt2 to Making from Scratch)", choices=["gpt2", "gpt2-small", "gpt2-medium", "gpt2-large", "gpt2-xl"], default="gpt2-small")
+        model_id = Prompt.ask("Zeta-Tool> OpenAI> Model ID (Select gpt2 to Making from Scratch)", choices=["gpt2", "gpt2-small", "gpt2-medium", "gpt2-large", "gpt2-xl"], default="gpt2-small")
 
         if model_id == "gpt2":
             config = GPT2Config()
@@ -66,11 +67,11 @@ def main():
 
     elif maker == "google":
 
-        model_id = Prompt.ask("Hinode-AI> Google> Model ID (Permission Required)", choices=["gemma", "codegemma", "gemma1.1", "gemma2"], default="gemma")
+        model_id = Prompt.ask("Zeta-Tool> Google> Model ID (Permission Required)", choices=["gemma", "codegemma", "gemma1.1", "gemma2"], default="gemma")
 
         if model_id == "gemma":
 
-            size = Prompt.ask("Hinode-AI> Google> Gemma 1> Size", choices=["2b", "7b"], default="2b")
+            size = Prompt.ask("Zeta-Tool> Google> Gemma 1> Size", choices=["2b", "7b"], default="2b")
 
             if size == "2b":
                 tokenizer = AutoTokenizer.from_pretrained('google/gemma-2b')
@@ -82,7 +83,7 @@ def main():
 
         elif model_id == "codegemma":
 
-            size = Prompt.ask("Hinode-AI> Google> CodeGemma 1> Size", choices=["2b", "7b"], default="2b")
+            size = Prompt.ask("Zeta-Tool> Google> CodeGemma 1> Size", choices=["2b", "7b"], default="2b")
 
             if size == "2b":
                 tokenizer = AutoTokenizer.from_pretrained('google/codegemma-2b')
@@ -94,7 +95,7 @@ def main():
 
         elif model_id == "gemma1.1":
 
-            size = Prompt.ask("Hinode-AI> Google> Gemma 1.1 [IT]> Size", choices=["2b", "7b"], default="2b")
+            size = Prompt.ask("Zeta-Tool> Google> Gemma 1.1 [IT]> Size", choices=["2b", "7b"], default="2b")
 
             if size == "2b":
                 tokenizer = AutoTokenizer.from_pretrained('google/gemma-1.1-2b-it')
@@ -106,7 +107,7 @@ def main():
 
         elif model_id == "gemma2":
 
-            size = Prompt.ask("Hinode-AI> Google> Gemma 2> Size", choices=["2b", "9b", "27b"], default="2b")
+            size = Prompt.ask("Zeta-Tool> Google> Gemma 2> Size", choices=["2b", "9b", "27b"], default="2b")
 
             if size == "2b":
                 tokenizer = AutoTokenizer.from_pretrained('google/gemma-2-2b')
@@ -123,11 +124,11 @@ def main():
 
     elif maker == "meta":
 
-        model_id = Prompt.ask("Hinode-AI> Meta> Model ID (Permission Required)", choices=["llama2", "codellama", "llama3", "llama3.1", "llama3.2", "llama3.2-v", "llama3.3"], default="llama2")
+        model_id = Prompt.ask("Zeta-Tool> Meta> Model ID (Permission Required)", choices=["llama2", "codellama", "llama3", "llama3.1", "llama3.2", "llama3.2-v", "llama3.3"], default="llama2")
 
         if model_id == "llama2":
 
-            size = Prompt.ask("Hinode-AI> Meta> Llama 2> Size", choices=["7b", "13b", "70b"], default="7b")
+            size = Prompt.ask("Zeta-Tool> Meta> Llama 2> Size", choices=["7b", "13b", "70b"], default="7b")
 
             if size == "7b":
                 tokenizer = AutoTokenizer.from_pretrained('meta-llama/Llama-2-7b')
@@ -143,7 +144,7 @@ def main():
 
         elif model_id == "codellama":
 
-            size = Prompt.ask("Hinode-AI> Meta> CodeLlama 1 [HF]> Size", choices=["7b", "13b", "34b", "70b"], default="7b")
+            size = Prompt.ask("Zeta-Tool> Meta> CodeLlama 1 [HF]> Size", choices=["7b", "13b", "34b", "70b"], default="7b")
 
             if size == "7b":
                 tokenizer = AutoTokenizer.from_pretrained('meta-llama/CodeLlama-7b-hf')
@@ -163,7 +164,7 @@ def main():
 
         elif model_id == "llama3":
 
-            size = Prompt.ask("Hinode-AI> Meta> Llama 3> Size", choices=["8b", "70b"], default="8b")
+            size = Prompt.ask("Zeta-Tool> Meta> Llama 3> Size", choices=["8b", "70b"], default="8b")
 
             if size == "8b":
                 tokenizer = AutoTokenizer.from_pretrained('meta-llama/Meta-Llama-3-8B')
@@ -175,7 +176,7 @@ def main():
 
         elif model_id == "llama3.1":
 
-            size = Prompt.ask("Hinode-AI> Meta> Llama 3.1> Size", choices=["8b", "70b", "405b"], default="8b")
+            size = Prompt.ask("Zeta-Tool> Meta> Llama 3.1> Size", choices=["8b", "70b", "405b"], default="8b")
 
             if size == "8b":
                 tokenizer = AutoTokenizer.from_pretrained('meta-llama/Llama-3.1-8B')
@@ -191,7 +192,7 @@ def main():
 
         elif model_id == "llama3.2":
 
-            size = Prompt.ask("Hinode-AI> Meta> Llama 3.2> Size", choices=["1b", "3b"], default="1b")
+            size = Prompt.ask("Zeta-Tool> Meta> Llama 3.2> Size", choices=["1b", "3b"], default="1b")
 
             if size == "1b":
                 tokenizer = AutoTokenizer.from_pretrained('meta-llama/Llama-3.2-1B')
@@ -203,7 +204,7 @@ def main():
 
         elif model_id == "llama3.2-v":
 
-            size = Prompt.ask("Hinode-AI> Meta> Llama 3.2 [+Vision]> Size", choices=["11b", "90b"], default="11b")
+            size = Prompt.ask("Zeta-Tool> Meta> Llama 3.2 [+Vision]> Size", choices=["11b", "90b"], default="11b")
 
             if size == "11b":
                 tokenizer = AutoTokenizer.from_pretrained('meta-llama/Llama-3.2-11B-Vision')
@@ -215,7 +216,7 @@ def main():
 
         elif model_id == "llama3.3":
 
-            size = Prompt.ask("Hinode-AI> Meta> Llama 3.3> 70B", choices=["confirm"], default="confirm")
+            size = Prompt.ask("Zeta-Tool> Meta> Llama 3.3> 70B", choices=["confirm"], default="confirm")
 
             if size == "confirm":
                 tokenizer = AutoTokenizer.from_pretrained('meta-llama/Llama-3.3-70B-Instruct')
@@ -224,11 +225,11 @@ def main():
 
     elif maker == "alibaba":
 
-        model_id = Prompt.ask("Hinode-AI> Alibaba Cloud> Model ID", choices=["qwen", "qwen1.5"], default="qwen")
+        model_id = Prompt.ask("Zeta-Tool> Alibaba Cloud> Model ID", choices=["qwen", "qwen1.5"], default="qwen")
 
         if model_id == "qwen":
 
-            size = Prompt.ask("Hinode-AI> Alibaba Cloud> Qwen 1> Size", choices=["1.8b", "7b", "14b", "72b"], default="1.8b")
+            size = Prompt.ask("Zeta-Tool> Alibaba Cloud> Qwen 1> Size", choices=["1.8b", "7b", "14b", "72b"], default="1.8b")
 
             if size == "1.8b":
                 tokenizer = AutoTokenizer.from_pretrained('Qwen/Qwen-1_8B')
@@ -248,7 +249,7 @@ def main():
 
         elif model_id == "qwen1.5":
 
-            size = Prompt.ask("Hinode-AI> Alibaba Cloud> Qwen 1.5> Size", choices=["0.5b", "1.8b", "4b", "14b"], default="0.5b")
+            size = Prompt.ask("Zeta-Tool> Alibaba Cloud> Qwen 1.5> Size", choices=["0.5b", "1.8b", "4b", "14b"], default="0.5b")
 
             if size == "0.5b":
                 tokenizer = AutoTokenizer.from_pretrained('Qwen/Qwen1.5-0.5B')
@@ -275,7 +276,13 @@ def main():
                 model = AutoModelForCausalLM.from_pretrained('Qwen/Qwen1.5-72B')
 
     elif maker == "local":
-        trained_model_folder = Prompt.ask("Hinode-AI> Local> Folder Path", default="./trained_model")
+        trained_model_folder = Prompt.ask("Zeta-Tool> Local> Folder Path", default="./trained_model")
+        tokenizer = AutoTokenizer.from_pretrained(trained_model_folder)
+        model = AutoModelForCausalLM.from_pretrained(trained_model_folder)
+
+    elif maker == "custom":
+        print("[yellow]WARNING:[/yellow] In Custom Mode, Please enter Path of the Repository that Transformers model with full weights, not a quantized version such as GGUF.")
+        trained_model_folder = Prompt.ask("Zeta-Tool> Custom> Hugging Face Repository Path", default="openai-community/gpt2")
         tokenizer = AutoTokenizer.from_pretrained(trained_model_folder)
         model = AutoModelForCausalLM.from_pretrained(trained_model_folder)
 
