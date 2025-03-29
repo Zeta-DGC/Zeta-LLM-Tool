@@ -49,8 +49,8 @@ Next, you will be asked to provide the path to the dataset. Zeta-Tool uses a cus
 We recommend selecting one of the provided templates.
 
 Zeta-Tool includes the following datasets as of this writing:  
-- `data_templates/OpenO1-SFT.json`  
-- `data_templates/azuki-2n.json`
+- (Need Git-LFS to Clone This) **[OpenO1-SFT](https://huggingface.co/datasets/O1-OPEN/OpenO1-SFT)** by OpenO1 Team **I converted to Azuki-Formatted Dataset.**
+- **Zeta-Classic 2n** by DiamondGotCat
 
 Here is a table summarizing the characteristics of the included datasets:
 
