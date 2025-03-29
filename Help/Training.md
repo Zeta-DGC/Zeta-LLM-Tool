@@ -1,5 +1,5 @@
 Thank you for your interest in this project.  
-This document explains one way to support Hinode-AI: contributing via pre-trained models.
+This document explains one way to support Zeta-Tool: contributing via pre-trained models.
 
 ### Requirements
 
@@ -45,10 +45,10 @@ After launching `training.py`, you will be prompted to make a selection.
 
 #### Dataset Path
 
-Next, you will be asked to provide the path to the dataset. Hinode-AI uses a custom JSON format.  
+Next, you will be asked to provide the path to the dataset. Zeta-Tool uses a custom JSON format.  
 We recommend selecting one of the provided templates.
 
-Hinode-AI includes the following datasets as of this writing:  
+Zeta-Tool includes the following datasets as of this writing:  
 - `data_templates/OpenO1-SFT.json`  
 - `data_templates/azuki-2n.json`
 
@@ -57,7 +57,7 @@ Here is a table summarizing the characteristics of the included datasets:
 | Dataset Name          | Characteristics                                                                                | Recommended Base Model | Estimated Training Time   | Notes                                                                                     | Dataset Path                     |
 |-----------------------|------------------------------------------------------------------------------------------------|------------------------|---------------------------|------------------------------------------------------------------------------------------|-----------------------------------|
 | **OpenO1**            | Published by the OpenO1 team on Hugging Face.<br> Includes reasoning processes for better answers.<br> High information density. | openai-community/gpt2 (GPT-2 Small) | Long (~12 hours)          | May yield high-quality answers.<br> Training time tends to be long due to high data volume. | `data_templates/OpenO1-SFT.json` |
-| **Azuki 2n**          | Created for version 2n of the Azuki.ai project.<br> Lower answer quality than Hinode-AI.       | openai-community/gpt2-large (GPT-2 Large) | Moderate (~30 min–2 hrs)  | May lack information density, so v2-medium or higher is recommended.                     | `data_templates/azuki-2n.json`   |
+| **Azuki 2n**          | Created for version 2n of the Azuki.ai project.<br> Lower answer quality than Zeta-Tool.       | openai-community/gpt2-large (GPT-2 Large) | Moderate (~30 min–2 hrs)  | May lack information density, so v2-medium or higher is recommended.                     | `data_templates/azuki-2n.json`   |
 
 ---
 
@@ -72,6 +72,6 @@ The final model will be saved in the `trained_model` folder.
 
 Finally, upload the contents of the `trained_model` folder to your own account as a model.  
 Include the following details in the description:  
-- Information about Hinode-AI  
+- Information about Zeta-Tool  
 - The base model used  
 - The name of the dataset used
