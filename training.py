@@ -469,14 +469,14 @@ def main():
 
     training_args = TrainingArguments(
         output_dir=Prompt.ask(friendly_prompt() + "output_dir (Temporary)", default='./results'),
-        num_train_epochs=Prompt.ask(friendly_prompt() + "num_train_epochs", default=3, type=int),
-        per_device_train_batch_size=Prompt.ask(friendly_prompt() + "per_device_train_batch_size", default=1, type=int),
-        gradient_accumulation_steps=Prompt.ask(friendly_prompt() + "gradient_accumulation_steps", default=4, type=int),
-        learning_rate=Prompt.ask(friendly_prompt() + "learning_rate", default=3e-5, type=int),
-        warmup_steps=Prompt.ask(friendly_prompt() + "warmup_steps", default=100, type=int),
-        weight_decay=Prompt.ask(friendly_prompt() + "weight_decay", default=0.01, type=int),
-        logging_dir=Prompt.ask(friendly_prompt() + "logging_dir", default='./logs', type=str),
-        logging_steps=Prompt.ask(friendly_prompt() + "logging_dir", default=10, type=int),
+        num_train_epochs=Prompt.ask(friendly_prompt() + "num_train_epochs", default=3),
+        per_device_train_batch_size=Prompt.ask(friendly_prompt() + "per_device_train_batch_size", default=1),
+        gradient_accumulation_steps=Prompt.ask(friendly_prompt() + "gradient_accumulation_steps", default=4),
+        learning_rate=Prompt.ask(friendly_prompt() + "learning_rate", default=3e-5),
+        warmup_steps=Prompt.ask(friendly_prompt() + "warmup_steps", default=100),
+        weight_decay=Prompt.ask(friendly_prompt() + "weight_decay", default=0.01),
+        logging_dir=Prompt.ask(friendly_prompt() + "logging_dir", default='./logs'),
+        logging_steps=Prompt.ask(friendly_prompt() + "logging_steps", default=10),
         save_steps=999999999999, # Avoid errors that occur during autosave
         save_total_limit=1
     )
