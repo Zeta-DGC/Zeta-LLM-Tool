@@ -41,10 +41,7 @@ To make this easier, a `training.py` script is located in the root directory.
 
 #### Training Options
 
-After launching `training.py`, you will be prompted to make a selection. The main options are:  
-- **empty**: Train from scratch.  
-- **v2**: Train based on GPT-2 (standard size). This is faster for datasets like OpenO1.  
-- **v2-medium**: Train based on a larger GPT-2 model. The Azuki-2n dataset is optimized for this size.  
+After launching `training.py`, you will be prompted to make a selection.
 
 #### Dataset Path
 
@@ -59,8 +56,8 @@ Here is a table summarizing the characteristics of the included datasets:
 
 | Dataset Name          | Characteristics                                                                                | Recommended Base Model | Estimated Training Time   | Notes                                                                                     | Dataset Path                     |
 |-----------------------|------------------------------------------------------------------------------------------------|------------------------|---------------------------|------------------------------------------------------------------------------------------|-----------------------------------|
-| **OpenO1**            | Published by the OpenO1 team on Hugging Face.<br> Includes reasoning processes for better answers.<br> High information density. | empty or v2            | Long (~12 hours)          | May yield high-quality answers.<br> Training time tends to be long due to high data volume. | `data_templates/OpenO1-SFT.json` |
-| **Azuki 2n**          | Created for version 2n of the Azuki.ai project.<br> Lower answer quality than Hinode-AI.       | v2-medium              | Moderate (~30 min–2 hrs)  | May lack information density, so v2-medium or higher is recommended.                     | `data_templates/azuki-2n.json`   |
+| **OpenO1**            | Published by the OpenO1 team on Hugging Face.<br> Includes reasoning processes for better answers.<br> High information density. | openai-community/gpt2 (GPT-2 Small) | Long (~12 hours)          | May yield high-quality answers.<br> Training time tends to be long due to high data volume. | `data_templates/OpenO1-SFT.json` |
+| **Azuki 2n**          | Created for version 2n of the Azuki.ai project.<br> Lower answer quality than Hinode-AI.       | openai-community/gpt2-large (GPT-2 Large) | Moderate (~30 min–2 hrs)  | May lack information density, so v2-medium or higher is recommended.                     | `data_templates/azuki-2n.json`   |
 
 ---
 
