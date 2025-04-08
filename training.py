@@ -454,6 +454,7 @@ def main():
     with open(path, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
+    # Format: AzukiF 1.0
     conversations = []
     for conversation in data:
         convo_text = ""
