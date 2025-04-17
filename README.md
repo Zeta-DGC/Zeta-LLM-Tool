@@ -1,3 +1,6 @@
+
+![DiamondGotCat-Zeta_1024](https://github.com/user-attachments/assets/54c6ba08-f3c6-48c0-a1e5-4df615c34837)
+
 > [!TIP]
 > Now you can use a variety of popular models other than OpenAI's GPT2✨
 
