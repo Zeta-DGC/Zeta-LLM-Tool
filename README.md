@@ -1,5 +1,5 @@
 
-![DiamondGotCat-Zeta_1024](https://github.com/user-attachments/assets/54c6ba08-f3c6-48c0-a1e5-4df615c34837)
+![Zeta Wall](https://github.com/user-attachments/assets/1c027250-ef1a-472b-8eee-36028f1e3481)
 
 > [!TIP]
 > Now you can use a variety of popular models other than OpenAI's GPT2✨
