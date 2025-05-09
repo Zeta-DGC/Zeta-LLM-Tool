@@ -488,7 +488,15 @@ def main():
         train_dataset=train_dataset,
     )
 
-    trainer.train()
+    try:
+        trainer.train()
+    except KeyboardInterrupt:
+        print("[red]Training interrupted by user. Saving the current model...[/red]")
+        interrupted_model_path = Prompt.ask(friendly_prompt() + "Save interrupted model to?", default='./interrupted-model')
+        model.save_pretrained(interrupted_model_path)
+        tokenizer.save_pretrained(interrupted_model_path)
+        print(friendly_prompt() + f"Model saved to '{interrupted_model_path}' after interruption.")
+        return
 
     print(friendly_prompt() + "Training Finished!")
     finished_model_path = Prompt.ask(friendly_prompt() + "Where do you want to save your finished model?", default='./your-own-model')
