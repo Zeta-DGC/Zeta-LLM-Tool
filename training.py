@@ -478,7 +478,7 @@ def main():
         weight_decay=Prompt.ask(friendly_prompt() + "weight_decay", default=0.01),
         logging_dir=Prompt.ask(friendly_prompt() + "logging_dir", default='./logs'),
         logging_steps=Prompt.ask(friendly_prompt() + "logging_steps", default=10),
-        save_steps=999999999999, # Avoid errors that occur during autosave
+        save_strategy="no", # Avoid errors that occur during autosave
         save_total_limit=1
     )
 
