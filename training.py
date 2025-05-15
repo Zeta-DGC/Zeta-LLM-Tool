@@ -46,7 +46,7 @@ def main():
     friendly_name["model"] = "(Default)"
 
     def friendly_prompt():
-        return f"Zeta-Tool> {friendly_name["maker"]}> {friendly_name["collection"]}> {friendly_name["model"]}> "
+        return f"Zeta-Tool> {friendly_name['maker']}> {friendly_name['collection']}> {friendly_name['model']}> "
 
     maker = Prompt.ask("Zeta-Tool> Maker ID", choices=["openai", "google", "meta", "alibaba", "local", "custom"], default="openai")
 
