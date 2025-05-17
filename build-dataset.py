@@ -48,7 +48,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Build AzukiF dataset from Zeta-Dataset Package (Zeta-2 or Later)")
     parser.add_argument("dataset_dir", help="Path to dataset directory (containing __zeta__.json)")
     parser.add_argument("output_file", help="Path to output AzukiF file (e.g., merged.json)")
-    parser.add_argument("--interval", type=int, default=50, help="Insert character data every N knowledge samples")
+    parser.add_argument("--interval", type=int, default=40, help="Insert character data every N knowledge samples")
     args = parser.parse_args()
 
     build_dataset(args.dataset_dir, args.output_file, interval=args.interval)
