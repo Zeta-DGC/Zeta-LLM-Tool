@@ -38,12 +38,11 @@ Fully Open-source LLM Tool
 4. Enter `/q` to Exit Chat
 
 ## Scripts
-- **training.py:** Learning using Zeta-Formatted Dataset
+- **training.py:** Learning using AzukiF 1.0 Dataset
 - **execute.py:** Run Learned Model (You Need Move Model Folder to ./trained-model)
 
-## Built-in Dataset
-- (Need Git-LFS to Clone This) **[OpenO1-SFT](https://huggingface.co/datasets/O1-OPEN/OpenO1-SFT)** by OpenO1 Team **I converted to Azuki-Formatted Dataset.**
-- **Zeta-Classic 2n** by DiamondGotCat
+## Official Public Datasets
+[Zeta-LLM/Zeta-Dataset/releases](https://github.com/Zeta-LLM/Zeta-Dataset/releases)
 
 ## Selectable Base Models
 
@@ -166,9 +165,10 @@ Fully Open-source LLM Tool
     - Tokenizer/Model: `Qwen/Qwen1.5-72B`
 
 ## Local Model
+from Safetensor Directory
 
-- **trained_model**  
-  - **Overview:** Your Pre-trained Model
+## Custom Model
+from HuggingFace Repo
 
 ---
 
