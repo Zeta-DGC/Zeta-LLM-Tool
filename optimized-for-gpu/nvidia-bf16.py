@@ -6,6 +6,15 @@ import json
 from rich import print
 from rich.prompt import Prompt
 
+print("Zeta-Tool Optimized Version: NVIDIA GPUs that Support bfloat16")
+print("""
+[blue]--- RunPod.io (NVIDIA GPU) ---[/blue]
+[bold]32GB VRAM AND UNDER:[/bold] L4, A30
+[bold]48GB VRAM:[/bold] RTX 6000 Ada, L40S, L40, A40
+[bold]80GB VRAM:[/bold] A100 SXM, A100 PCIe, H100 SXM, H100 PCIe
+[bold]80GB+ VRAM:[/bold] H200 SXM, H100 NVL, NVIDIA B200
+""")
+
 class ConversationDataset(Dataset):
         def __init__(self, dataframe, tokenizer, max_length=512):
             self.dataframe = dataframe
