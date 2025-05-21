@@ -1,4 +1,4 @@
-![Zeta Thumbnail](https://github.com/user-attachments/assets/8c8e5628-0d16-42a6-bdce-1cea50016b89)
+![Zeta LLM Components Wall](https://github.com/user-attachments/assets/539acccd-c473-4148-a470-48a4e39048ab)
 
 > [!TIP]
 > Now you can use a variety of popular models other than OpenAI's GPT2✨
