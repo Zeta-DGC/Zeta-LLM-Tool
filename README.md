@@ -1,5 +1,4 @@
-
-![Zeta Wall](https://github.com/user-attachments/assets/1c027250-ef1a-472b-8eee-36028f1e3481)
+![Zeta Thumbnail](https://github.com/user-attachments/assets/8c8e5628-0d16-42a6-bdce-1cea50016b89)
 
 > [!TIP]
 > Now you can use a variety of popular models other than OpenAI's GPT2✨
