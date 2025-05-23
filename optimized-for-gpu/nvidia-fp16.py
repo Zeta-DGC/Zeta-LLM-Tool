@@ -5,12 +5,7 @@ from torch.utils.data import Dataset
 import json
 from rich import print
 from rich.prompt import Prompt
-
-print("Zeta-Tool Optimized Version: NVIDIA GPUs that Support bfloat16")
-print("""
-[blue]--- RunPod.io (NVIDIA GPU) ---[/blue]
-[bold]All[/bold]
-""")
+from datasets import load_dataset
 
 class ConversationDataset(Dataset):
         def __init__(self, dataframe, tokenizer, max_length=512):
@@ -54,9 +49,34 @@ def main():
     def friendly_prompt():
         return f"Zeta-Tool> {friendly_name['maker']}> {friendly_name['collection']}> {friendly_name['model']}> "
 
-    maker = Prompt.ask("Zeta-Tool> Maker ID", choices=["openai", "google", "meta", "alibaba", "local", "custom"], default="openai")
+    maker = Prompt.ask("Zeta-Tool> Maker ID", choices=["zeta", "openai", "google", "meta", "alibaba", "local", "custom"], default="zeta")
 
-    if maker == "openai":
+    if maker == "zeta":
+
+        friendly_name["maker"] = "Zeta Project"
+        model_id = Prompt.ask("Zeta-Tool> Zeta Project> Model ID", choices=["zeta-1", "zeta-2", "zeta-3", "zeta-4"], default="zeta-4")
+
+        if model_id == "zeta-1":
+            friendly_name["model"] = "Zeta 1"
+            tokenizer = AutoTokenizer.from_pretrained('Zeta-LLM/Zeta-1')
+            model = AutoModelForCausalLM.from_pretrained('Zeta-LLM/Zeta-1')
+
+        if model_id == "zeta-2":
+            friendly_name["model"] = "Zeta 2"
+            tokenizer = AutoTokenizer.from_pretrained('Zeta-LLM/Zeta-2')
+            model = AutoModelForCausalLM.from_pretrained('Zeta-LLM/Zeta-2')
+
+        if model_id == "zeta-3":
+            friendly_name["model"] = "Zeta 3"
+            tokenizer = AutoTokenizer.from_pretrained('Zeta-LLM/Zeta-3')
+            model = AutoModelForCausalLM.from_pretrained('Zeta-LLM/Zeta-3')
+
+        if model_id == "zeta-4":
+            friendly_name["model"] = "Zeta 4"
+            tokenizer = AutoTokenizer.from_pretrained('Zeta-LLM/Zeta-4')
+            model = AutoModelForCausalLM.from_pretrained('Zeta-LLM/Zeta-4')
+
+    elif maker == "openai":
 
         friendly_name["maker"] = "OpenAI"
         model_id = Prompt.ask("Zeta-Tool> OpenAI> Model ID (Select gpt2 to Making from Scratch)", choices=["gpt2", "gpt2-small", "gpt2-medium", "gpt2-large", "gpt2-xl"], default="gpt2-small")
@@ -455,20 +475,43 @@ def main():
 
     tokenizer.pad_token = tokenizer.eos_token
 
-    path = Prompt.ask(friendly_prompt() + "Dataset Path (AzukiF 1.0 JSON Format)")
+    use_hf_dataset = Prompt.ask(friendly_prompt() + "Dataset Type (azukif1.0/huggingface-repo)", choices=["azukif1.0", "huggingface-repo"], default="azukif1.0")
 
-    with open(path, 'r', encoding='utf-8') as f:
-        data = json.load(f)
+    if use_hf_dataset == "y":
+        dataset_name = Prompt.ask(friendly_prompt() + "Enter Hugging Face dataset id (`username/repo-id`)")
+        subset = Prompt.ask(friendly_prompt() + "Subset or config name (or leave blank)", default="")
+        if subset.strip() != "":
+            raw_dataset = load_dataset(dataset_name, subset)
+        else:
+            raw_dataset = load_dataset(dataset_name)
 
-    # Format: AzukiF 1.0
-    conversations = []
-    for conversation in data:
-        convo_text = ""
-        for message in conversation:
-            role = str(message['role'])
-            content = str(message['content'])
-            convo_text += f"<{role.upper()}>{content}</{role.upper()}>"
-        conversations.append(convo_text)
+        if "train" not in raw_dataset:
+            print(f"[red]No 'train' split found in {dataset_name}. Aborting.[/red]")
+            return
+
+        column_map = {}
+        print("[cyan]Available columns:[/cyan]", list(raw_dataset["train"].features.keys()))
+        column_map["input"] = Prompt.ask(friendly_prompt() + "Which column contains input text?", default="input")
+        column_map["output"] = Prompt.ask(friendly_prompt() + "Which column contains output text?", default="output")
+
+        conversations = [
+            f"<USER>{ex[column_map['input']]}</USER><ASSISTANT>{ex[column_map['output']]}</ASSISTANT>"
+            for ex in raw_dataset["train"]
+        ]
+
+    else:
+        path = Prompt.ask(friendly_prompt() + "Dataset Path (AzukiF 1.0 JSON Format)")
+        with open(path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+
+        conversations = []
+        for conversation in data:
+            convo_text = ""
+            for message in conversation:
+                role = str(message['role'])
+                content = str(message['content'])
+                convo_text += f"<{role.upper()}>{content}</{role.upper()}>"
+            conversations.append(convo_text)
 
     df = pd.DataFrame({'conversation': conversations})
 
@@ -477,20 +520,17 @@ def main():
     training_args = TrainingArguments(
         output_dir=Prompt.ask(friendly_prompt() + "output_dir (Temporary)", default='./results'),
         num_train_epochs=Prompt.ask(friendly_prompt() + "num_train_epochs", default=3),
-        per_device_train_batch_size=Prompt.ask(friendly_prompt() + "per_device_train_batch_size", default=6),
-        gradient_accumulation_steps=Prompt.ask(friendly_prompt() + "gradient_accumulation_steps", default=8),
-        learning_rate=Prompt.ask(friendly_prompt() + "learning_rate", default=2e-5),
-        warmup_steps=Prompt.ask(friendly_prompt() + "warmup_steps", default=500),
-        weight_decay=Prompt.ask(friendly_prompt() + "weight_decay", default=0.05),
+        per_device_train_batch_size=Prompt.ask(friendly_prompt() + "per_device_train_batch_size", default=1),
+        gradient_accumulation_steps=Prompt.ask(friendly_prompt() + "gradient_accumulation_steps", default=4),
+        learning_rate=Prompt.ask(friendly_prompt() + "learning_rate", default=3e-5),
+        warmup_steps=Prompt.ask(friendly_prompt() + "warmup_steps", default=100),
+        weight_decay=Prompt.ask(friendly_prompt() + "weight_decay", default=0.01),
         logging_dir=Prompt.ask(friendly_prompt() + "logging_dir", default='./logs'),
         logging_steps=Prompt.ask(friendly_prompt() + "logging_steps", default=10),
-        save_strategy="no", # Avoid errors that occur during autosave
-        save_total_limit=1,
         fp16=True,
-        dataloader_pin_memory=True
+        save_strategy="no", # Avoid errors that occur during autosave
+        save_total_limit=1
     )
-
-    model.gradient_checkpointing_enable()
 
     trainer = Trainer(
         model=model,
