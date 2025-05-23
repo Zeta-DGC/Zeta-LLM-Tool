@@ -5,6 +5,7 @@ from torch.utils.data import Dataset
 import json
 from rich import print
 from rich.prompt import Prompt
+from datasets import load_dataset
 
 class ConversationDataset(Dataset):
         def __init__(self, dataframe, tokenizer, max_length=512):
@@ -48,9 +49,34 @@ def main():
     def friendly_prompt():
         return f"Zeta-Tool> {friendly_name['maker']}> {friendly_name['collection']}> {friendly_name['model']}> "
 
-    maker = Prompt.ask("Zeta-Tool> Maker ID", choices=["openai", "google", "meta", "alibaba", "local", "custom"], default="openai")
+    maker = Prompt.ask("Zeta-Tool> Maker ID", choices=["zeta", "openai", "google", "meta", "alibaba", "local", "custom"], default="zeta")
 
-    if maker == "openai":
+    if maker == "zeta":
+
+        friendly_name["maker"] = "Zeta Project"
+        model_id = Prompt.ask("Zeta-Tool> Zeta Project> Model ID", choices=["zeta-1", "zeta-2", "zeta-3", "zeta-4"], default="zeta-4")
+
+        if model_id == "zeta-1":
+            friendly_name["model"] = "Zeta 1"
+            tokenizer = AutoTokenizer.from_pretrained('Zeta-LLM/Zeta-1')
+            model = AutoModelForCausalLM.from_pretrained('Zeta-LLM/Zeta-1')
+
+        if model_id == "zeta-2":
+            friendly_name["model"] = "Zeta 2"
+            tokenizer = AutoTokenizer.from_pretrained('Zeta-LLM/Zeta-2')
+            model = AutoModelForCausalLM.from_pretrained('Zeta-LLM/Zeta-2')
+
+        if model_id == "zeta-3":
+            friendly_name["model"] = "Zeta 3"
+            tokenizer = AutoTokenizer.from_pretrained('Zeta-LLM/Zeta-3')
+            model = AutoModelForCausalLM.from_pretrained('Zeta-LLM/Zeta-3')
+
+        if model_id == "zeta-4":
+            friendly_name["model"] = "Zeta 4"
+            tokenizer = AutoTokenizer.from_pretrained('Zeta-LLM/Zeta-4')
+            model = AutoModelForCausalLM.from_pretrained('Zeta-LLM/Zeta-4')
+
+    elif maker == "openai":
 
         friendly_name["maker"] = "OpenAI"
         model_id = Prompt.ask("Zeta-Tool> OpenAI> Model ID (Select gpt2 to Making from Scratch)", choices=["gpt2", "gpt2-small", "gpt2-medium", "gpt2-large", "gpt2-xl"], default="gpt2-small")
@@ -449,20 +475,43 @@ def main():
 
     tokenizer.pad_token = tokenizer.eos_token
 
-    path = Prompt.ask(friendly_prompt() + "Dataset Path (AzukiF 1.0 JSON Format)")
+    use_hf_dataset = Prompt.ask(friendly_prompt() + "Dataset Type (azukif1.0/huggingface-repo)", choices=["azukif1.0", "huggingface-repo"], default="azukif1.0")
 
-    with open(path, 'r', encoding='utf-8') as f:
-        data = json.load(f)
+    if use_hf_dataset == "y":
+        dataset_name = Prompt.ask(friendly_prompt() + "Enter Hugging Face dataset id (`username/repo-id`)")
+        subset = Prompt.ask(friendly_prompt() + "Subset or config name (or leave blank)", default="")
+        if subset.strip() != "":
+            raw_dataset = load_dataset(dataset_name, subset)
+        else:
+            raw_dataset = load_dataset(dataset_name)
 
-    # Format: AzukiF 1.0
-    conversations = []
-    for conversation in data:
-        convo_text = ""
-        for message in conversation:
-            role = str(message['role'])
-            content = str(message['content'])
-            convo_text += f"<{role.upper()}>{content}</{role.upper()}>"
-        conversations.append(convo_text)
+        if "train" not in raw_dataset:
+            print(f"[red]No 'train' split found in {dataset_name}. Aborting.[/red]")
+            return
+
+        column_map = {}
+        print("[cyan]Available columns:[/cyan]", list(raw_dataset["train"].features.keys()))
+        column_map["input"] = Prompt.ask(friendly_prompt() + "Which column contains input text?", default="input")
+        column_map["output"] = Prompt.ask(friendly_prompt() + "Which column contains output text?", default="output")
+
+        conversations = [
+            f"<USER>{ex[column_map['input']]}</USER><ASSISTANT>{ex[column_map['output']]}</ASSISTANT>"
+            for ex in raw_dataset["train"]
+        ]
+
+    else:
+        path = Prompt.ask(friendly_prompt() + "Dataset Path (AzukiF 1.0 JSON Format)")
+        with open(path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+
+        conversations = []
+        for conversation in data:
+            convo_text = ""
+            for message in conversation:
+                role = str(message['role'])
+                content = str(message['content'])
+                convo_text += f"<{role.upper()}>{content}</{role.upper()}>"
+            conversations.append(convo_text)
 
     df = pd.DataFrame({'conversation': conversations})
 
