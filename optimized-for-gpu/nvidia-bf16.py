@@ -490,7 +490,6 @@ def main():
         bf16=True,
         save_strategy="no", # Avoid errors that occur during autosave
         save_total_limit=1,
-        bf16=True,
         dataloader_pin_memory=True
     )
 
