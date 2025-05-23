@@ -477,7 +477,7 @@ def main():
 
     use_hf_dataset = Prompt.ask(friendly_prompt() + "Dataset Type (azukif1.0/huggingface-repo)", choices=["azukif1.0", "huggingface-repo"], default="azukif1.0")
 
-    if use_hf_dataset == "y":
+    if use_hf_dataset == "huggingface-repo":
         dataset_name = Prompt.ask(friendly_prompt() + "Enter Hugging Face dataset id (`username/repo-id`)")
         subset = Prompt.ask(friendly_prompt() + "Subset or config name (or leave blank)", default="")
         if subset.strip() != "":
