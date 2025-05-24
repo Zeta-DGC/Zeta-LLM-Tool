@@ -1,4 +1,4 @@
-![DiamondGotCat 20 Wall](https://github.com/user-attachments/assets/a7eb5002-7c62-4197-beca-6cab3ae8130a)
+![wall-2_v20-1](https://github.com/user-attachments/assets/d942ed69-11ac-4e69-9dd6-87bfc47232b8)
 
 > [!TIP]
 > Now you can use a variety of popular models other than OpenAI's GPT2✨
