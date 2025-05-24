@@ -1,4 +1,4 @@
-![Zeta LLM Components Wall](https://github.com/user-attachments/assets/539acccd-c473-4148-a470-48a4e39048ab)
+![DiamondGotCat 20 Wall](https://github.com/user-attachments/assets/a7eb5002-7c62-4197-beca-6cab3ae8130a)
 
 > [!TIP]
 > Now you can use a variety of popular models other than OpenAI's GPT2✨
