@@ -1,4 +1,4 @@
-![wall-2_v20-1](https://github.com/user-attachments/assets/d942ed69-11ac-4e69-9dd6-87bfc47232b8)
+![wall_v20-1](https://github.com/user-attachments/assets/7ffd3aa8-a06b-4e05-bc1d-8f41fe47ed4d)
 
 > [!TIP]
 > Now you can use a variety of popular models other than OpenAI's GPT2✨
