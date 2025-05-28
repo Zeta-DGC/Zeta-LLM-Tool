@@ -1,7 +1,8 @@
-![wall_v20-1](https://github.com/user-attachments/assets/7ffd3aa8-a06b-4e05-bc1d-8f41fe47ed4d)
+![Zeta Thumbnail](https://github.com/user-attachments/assets/061aaacd-0639-4123-9c7c-397891f03ed9)
 
 > [!TIP]
 > Now you can use a variety of popular models other than OpenAI's GPT2✨
+
 
 > [!IMPORTANT]
 > Main Repository: [Zeta](https://github.com/DiamondGotCat/Zeta)
