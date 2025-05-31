@@ -490,9 +490,9 @@ def main():
 
     tokenizer.pad_token = tokenizer.eos_token
 
-    use_hf_dataset = Prompt.ask(friendly_prompt() + "Dataset Type (azukif1.0/huggingface-repo)", choices=["azukif1.0", "huggingface-repo"], default="azukif1.0")
+    dataset_type = Prompt.ask(friendly_prompt() + "Dataset Type (azukif/huggingface)", choices=["azukif", "huggingface"], default="azukif1.0")
 
-    if use_hf_dataset == "huggingface-repo":
+    if dataset_type == "huggingface":
         dataset_name = Prompt.ask(friendly_prompt() + "Enter Hugging Face dataset id (`username/repo-id`)")
         subset = Prompt.ask(friendly_prompt() + "Subset or config name (or leave blank)", default="")
         if subset.strip() != "":
@@ -510,7 +510,7 @@ def main():
         column_map["output"] = Prompt.ask(friendly_prompt() + "Which column contains output text?", default="output")
 
         conversations = [
-            f"<USER>{ex[column_map['input']]}</USER><ASSISTANT>{ex[column_map['output']]}</ASSISTANT>"
+            f"<user>{ex[column_map['input']]}</user><assistant>{ex[column_map['output']]}</assistant>"
             for ex in raw_dataset["train"]
         ]
 
@@ -525,7 +525,7 @@ def main():
             for message in conversation:
                 role = str(message['role'])
                 content = str(message['content'])
-                convo_text += f"<{role.upper()}>{content}</{role.upper()}>"
+                convo_text += f"<{role.lower()}>{content}</{role.lower()}>"
             conversations.append(convo_text)
 
     df = pd.DataFrame({'conversation': conversations})
