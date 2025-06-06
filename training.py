@@ -208,8 +208,6 @@ def main():
     print(f"  [yellow]Steps per epoch:[/yellow] {steps_per_epoch}")
     print(f"  [yellow]Total steps:[/yellow] {total_steps}")
     print(f"  [yellow]Estimated training time:[/yellow] {hours}h {minutes}m (rough estimate)")
-    
-    print(f"\nOnce processing is complete, parameters are expected to be updated to your specified values.")
 
     confirm = Prompt.ask(friendly_prompt() + "Do you want to start training?", choices=['y', 'n'], default='y')
     if confirm != 'y':
