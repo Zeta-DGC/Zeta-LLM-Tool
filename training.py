@@ -35,11 +35,7 @@ class ConversationDataset(Dataset):
             }
 
 def main():
-
-    print("Zeta-Tool")
-    print("    You can Create LLM from Other LLM")
-    print("----------")
-    print("")
+    print("[green bold]Welcome to Zeta-Tool![/green bold]")
 
     friendly_name = {}
     friendly_name["maker"] = "(Default)"
@@ -49,412 +45,14 @@ def main():
     def friendly_prompt():
         return f"Zeta-Tool> {friendly_name['maker']}> {friendly_name['collection']}> {friendly_name['model']}> "
 
-    maker = Prompt.ask("Zeta-Tool> Maker ID", choices=["zeta", "openai", "google", "meta", "alibaba", "local", "custom"], default="zeta")
+    maker = Prompt.ask("Zeta-Tool> ID", choices=["local", "custom"], default="custom")
 
-    if maker == "zeta":
-
-        friendly_name["maker"] = "Zeta Project"
-        model_id = Prompt.ask("Zeta-Tool> Zeta Project> Model ID", choices=["zeta-1", "zeta-2", "zeta-3", "zeta-4"], default="zeta-4")
-
-        if model_id == "zeta-1":
-            friendly_name["model"] = "Zeta 1"
-            tokenizer = AutoTokenizer.from_pretrained('Zeta-LLM/Zeta-1')
-            model = AutoModelForCausalLM.from_pretrained('Zeta-LLM/Zeta-1')
-
-        if model_id == "zeta-2":
-            friendly_name["model"] = "Zeta 2"
-            tokenizer = AutoTokenizer.from_pretrained('Zeta-LLM/Zeta-2')
-            model = AutoModelForCausalLM.from_pretrained('Zeta-LLM/Zeta-2')
-
-        if model_id == "zeta-3":
-            friendly_name["model"] = "Zeta 3"
-            tokenizer = AutoTokenizer.from_pretrained('Zeta-LLM/Zeta-3')
-            model = AutoModelForCausalLM.from_pretrained('Zeta-LLM/Zeta-3')
-
-        if model_id == "zeta-4":
-            friendly_name["model"] = "Zeta 4"
-            tokenizer = AutoTokenizer.from_pretrained('Zeta-LLM/Zeta-4')
-            model = AutoModelForCausalLM.from_pretrained('Zeta-LLM/Zeta-4')
-
-    elif maker == "openai":
-
-        friendly_name["maker"] = "OpenAI"
-        model_id = Prompt.ask("Zeta-Tool> OpenAI> Model ID (Select gpt2 to Making from Scratch)", choices=["gpt2", "gpt2-small", "gpt2-medium", "gpt2-large", "gpt2-xl"], default="gpt2-small")
-
-        if model_id == "gpt2":
-            friendly_name["model"] = "GPT-2 (Tokenizer Only)"
-            config = GPT2Config()
-            model = GPT2LMHeadModel(config)
-            tokenizer = AutoTokenizer.from_pretrained('openai-community/gpt2')
-        elif model_id == "gpt2-small":
-            friendly_name["model"] = "GPT-2 (Small)"
-            tokenizer = AutoTokenizer.from_pretrained('openai-community/gpt2')
-            model = AutoModelForCausalLM.from_pretrained('openai-community/gpt2')
-        elif model_id == "gpt2-medium":
-            friendly_name["model"] = "GPT-2 (Medium)"
-            tokenizer = AutoTokenizer.from_pretrained('openai-community/gpt2-medium')
-            model = AutoModelForCausalLM.from_pretrained('openai-community/gpt2-medium')
-        elif model_id == "gpt2-large":
-            friendly_name["model"] = "GPT-2 (Large)"
-            tokenizer = AutoTokenizer.from_pretrained('openai-community/gpt2-large')
-            model = AutoModelForCausalLM.from_pretrained('openai-community/gpt2-large')
-        elif model_id == "gpt2-xl":
-            friendly_name["model"] = "GPT-2 (X-Large)"
-            tokenizer = AutoTokenizer.from_pretrained('openai-community/gpt2-xl')
-            model = AutoModelForCausalLM.from_pretrained('openai-community/gpt2-xl')
-
-    elif maker == "google":
-
-        friendly_name["maker"] = "Google Deepmind"
-
-        model_id = Prompt.ask("Zeta-Tool> Google> Model ID (Permission Required)", choices=["gemma", "codegemma", "gemma1.1", "gemma2"], default="gemma")
-
-        if model_id == "gemma":
-
-            friendly_name["collection"] = "Gemma 1"
-
-            size = Prompt.ask("Zeta-Tool> Google> Gemma 1> Size", choices=["2b", "7b"], default="2b")
-
-            if size == "2b":
-
-                friendly_name["model"] = "2b"
-
-                tokenizer = AutoTokenizer.from_pretrained('google/gemma-2b')
-                model = AutoModelForCausalLM.from_pretrained('google/gemma-2b')
-
-            elif size == "7b":
-
-                friendly_name["model"] = "7b"
-
-                tokenizer = AutoTokenizer.from_pretrained('google/gemma-7b')
-                model = AutoModelForCausalLM.from_pretrained('google/gemma-7b')
-
-        elif model_id == "codegemma":
-
-            friendly_name["collection"] = "CodeGemma 1"
-
-            size = Prompt.ask("Zeta-Tool> Google> CodeGemma 1> Size", choices=["2b", "7b"], default="2b")
-
-            if size == "2b":
-
-                friendly_name["model"] = "2b"
-
-                tokenizer = AutoTokenizer.from_pretrained('google/codegemma-2b')
-                model = AutoModelForCausalLM.from_pretrained('google/codegemma-2b')
-
-            elif size == "7b":
-
-                friendly_name["model"] = "7b"
-
-                tokenizer = AutoTokenizer.from_pretrained('google/codegemma-7b')
-                model = AutoModelForCausalLM.from_pretrained('google/codegemma-7b')
-
-        elif model_id == "gemma1.1":
-
-            friendly_name["collection"] = "Gemma 1.1 [Instruct]"
-
-            size = Prompt.ask("Zeta-Tool> Google> Gemma 1.1 [Instruct]> Size", choices=["2b", "7b"], default="2b")
-
-            if size == "2b":
-
-                friendly_name["model"] = "2b"
-
-                tokenizer = AutoTokenizer.from_pretrained('google/gemma-1.1-2b-it')
-                model = AutoModelForCausalLM.from_pretrained('google/gemma-1.1-2b-it')
-
-            elif size == "7b":
-
-                friendly_name["model"] = "7b"
-
-                tokenizer = AutoTokenizer.from_pretrained('google/gemma-1.1-7b-it')
-                model = AutoModelForCausalLM.from_pretrained('google/gemma-1.1-7b-it')
-
-        elif model_id == "gemma2":
-
-            friendly_name["collection"] = "Gemma 2"
-            size = Prompt.ask("Zeta-Tool> Google> Gemma 2> Size", choices=["2b", "9b", "27b"], default="2b")
-
-            if size == "2b":
-
-                friendly_name["model"] = "2b"
-
-                tokenizer = AutoTokenizer.from_pretrained('google/gemma-2-2b')
-                model = AutoModelForCausalLM.from_pretrained('google/gemma-2-2b')
-
-            elif size == "9b":
-
-                friendly_name["model"] = "9b"
-                
-                tokenizer = AutoTokenizer.from_pretrained('google/gemma-2-9b')
-                model = AutoModelForCausalLM.from_pretrained('google/gemma-2-9b')
-
-            elif size == "27b":
-
-                friendly_name["model"] = "27b"
-                
-                tokenizer = AutoTokenizer.from_pretrained('google/gemma-2-27b')
-                model = AutoModelForCausalLM.from_pretrained('google/gemma-2-27b')
-
-
-    elif maker == "meta":
-
-        friendly_name["maker"] = "Meta"
-
-        model_id = Prompt.ask("Zeta-Tool> Meta> Model ID (Permission Required)", choices=["llama2", "codellama", "llama3", "llama3.1", "llama3.2", "llama3.2-v", "llama3.3"], default="llama2")
-
-        if model_id == "llama2":
-
-            friendly_name["collection"] = "Llama 2"
-
-            size = Prompt.ask("Zeta-Tool> Meta> Llama 2> Size", choices=["7b", "13b", "70b"], default="7b")
-
-            if size == "7b":
-
-                friendly_name["model"] = "7b"
-
-                tokenizer = AutoTokenizer.from_pretrained('meta-llama/Llama-2-7b')
-                model = AutoModelForCausalLM.from_pretrained('meta-llama/Llama-2-7b')
-
-            elif size == "13b":
-
-                friendly_name["model"] = "13b"
-
-                tokenizer = AutoTokenizer.from_pretrained('meta-llama/Llama-2-13b')
-                model = AutoModelForCausalLM.from_pretrained('meta-llama/Llama-2-13b')
-
-            elif size == "70b":
-
-                friendly_name["model"] = "70b"
-
-                tokenizer = AutoTokenizer.from_pretrained('meta-llama/Llama-2-70b')
-                model = AutoModelForCausalLM.from_pretrained('meta-llama/Llama-2-70b')
-
-        elif model_id == "codellama":
-
-            friendly_name["collection"] = "CodeLlama 1 [Hugging Face Format]"
-
-            size = Prompt.ask("Zeta-Tool> Meta> CodeLlama 1 [Hugging Face Format]> Size", choices=["7b", "13b", "34b", "70b"], default="7b")
-
-            if size == "7b":
-
-                friendly_name["model"] = "7b"
-
-                tokenizer = AutoTokenizer.from_pretrained('meta-llama/CodeLlama-7b-hf')
-                model = AutoModelForCausalLM.from_pretrained('meta-llama/CodeLlama-7b-hf')
-
-            elif size == "13b":
-
-                friendly_name["model"] = "13b"
-
-                tokenizer = AutoTokenizer.from_pretrained('meta-llama/CodeLlama-13b-hf')
-                model = AutoModelForCausalLM.from_pretrained('meta-llama/CodeLlama-13b-hf')
-
-            elif size == "34b":
-
-                friendly_name["model"] = "34b"
-
-                tokenizer = AutoTokenizer.from_pretrained('meta-llama/CodeLlama-34b-hf')
-                model = AutoModelForCausalLM.from_pretrained('meta-llama/CodeLlama-34b-hf')
-
-            elif size == "70b":
-
-                friendly_name["model"] = "70b"
-
-                tokenizer = AutoTokenizer.from_pretrained('meta-llama/CodeLlama-70b-hf')
-                model = AutoModelForCausalLM.from_pretrained('meta-llama/CodeLlama-70b-hf')
-
-        elif model_id == "llama3":
-
-            friendly_name["collection"] = "Llama 3"
-
-            size = Prompt.ask("Zeta-Tool> Meta> Llama 3> Size", choices=["8b", "70b"], default="8b")
-
-            if size == "8b":
-
-                friendly_name["model"] = "8b"
-
-                tokenizer = AutoTokenizer.from_pretrained('meta-llama/Meta-Llama-3-8B')
-                model = AutoModelForCausalLM.from_pretrained('meta-llama/Meta-Llama-3-8B')
-
-            elif size == "70b":
-
-                friendly_name["model"] = "70b"
-
-                tokenizer = AutoTokenizer.from_pretrained('meta-llama/Meta-Llama-3-70B')
-                model = AutoModelForCausalLM.from_pretrained('meta-llama/Meta-Llama-3-70B')
-
-        elif model_id == "llama3.1":
-
-            friendly_name["collection"] = "Llama 3.1"
-
-            size = Prompt.ask("Zeta-Tool> Meta> Llama 3.1> Size", choices=["8b", "70b", "405b"], default="8b")
-
-            if size == "8b":
-
-                friendly_name["model"] = "8b"
-
-                tokenizer = AutoTokenizer.from_pretrained('meta-llama/Llama-3.1-8B')
-                model = AutoModelForCausalLM.from_pretrained('meta-llama/Llama-3.1-8B')
-
-            elif size == "70b":
-
-                friendly_name["model"] = "70b"
-
-                tokenizer = AutoTokenizer.from_pretrained('meta-llama/Llama-3.1-70B')
-                model = AutoModelForCausalLM.from_pretrained('meta-llama/Llama-3.1-70B')
-
-            elif size == "405b":
-
-                friendly_name["model"] = "405b"
-
-                tokenizer = AutoTokenizer.from_pretrained('meta-llama/Llama-3.1-405B')
-                model = AutoModelForCausalLM.from_pretrained('meta-llama/Llama-3.1-405B')
-
-        elif model_id == "llama3.2":
-
-            friendly_name["collection"] = "Llama 3.2"
-
-            size = Prompt.ask("Zeta-Tool> Meta> Llama 3.2> Size", choices=["1b", "3b"], default="1b")
-
-            if size == "1b":
-
-                friendly_name["model"] = "1b"
-
-                tokenizer = AutoTokenizer.from_pretrained('meta-llama/Llama-3.2-1B')
-                model = AutoModelForCausalLM.from_pretrained('meta-llama/Llama-3.2-1B')
-
-            elif size == "3b":
-
-                friendly_name["model"] = "3b"
-
-                tokenizer = AutoTokenizer.from_pretrained('meta-llama/Llama-3.2-3B')
-                model = AutoModelForCausalLM.from_pretrained('meta-llama/Llama-3.2-3B')
-
-        elif model_id == "llama3.2-v":
-
-            friendly_name["collection"] = "Llama 3.2 [Vision]"
-
-            size = Prompt.ask("Zeta-Tool> Meta> Llama 3.2 [Vision]> Size", choices=["11b", "90b"], default="11b")
-
-            if size == "11b":
-
-                friendly_name["model"] = "11b"
-
-                tokenizer = AutoTokenizer.from_pretrained('meta-llama/Llama-3.2-11B-Vision')
-                model = AutoModelForCausalLM.from_pretrained('meta-llama/Llama-3.2-11B-Vision')
-
-            elif size == "90b":
-
-                friendly_name["model"] = "90b"
-
-                tokenizer = AutoTokenizer.from_pretrained('meta-llama/Llama-3.2-90B-Vision')
-                model = AutoModelForCausalLM.from_pretrained('meta-llama/Llama-3.2-90B-Vision')
-
-        elif model_id == "llama3.3":
-
-            friendly_name["collection"] = "Llama 3.3"
-
-            size = Prompt.ask("Zeta-Tool> Meta> Llama 3.3> 70B", choices=["confirm"], default="confirm")
-
-            if size == "confirm":
-                tokenizer = AutoTokenizer.from_pretrained('meta-llama/Llama-3.3-70B-Instruct')
-                model = AutoModelForCausalLM.from_pretrained('meta-llama/Llama-3.3-70B-Instruct')
-
-
-    elif maker == "alibaba":
-
-        friendly_name["maker"] = "Alibaba Cloud"
-
-        model_id = Prompt.ask("Zeta-Tool> Alibaba Cloud> Model ID", choices=["qwen", "qwen1.5"], default="qwen")
-
-        if model_id == "qwen":
-
-            friendly_name["collection"] = "Qwen 1"
-
-            size = Prompt.ask("Zeta-Tool> Alibaba Cloud> Qwen 1> Size", choices=["1.8b", "7b", "14b", "72b"], default="1.8b")
-
-            if size == "1.8b":
-
-                friendly_name["model"] = "1.8b"
-
-                tokenizer = AutoTokenizer.from_pretrained('Qwen/Qwen-1_8B')
-                model = AutoModelForCausalLM.from_pretrained('Qwen/Qwen-1_8B')
-
-            elif size == "7b":
-
-                friendly_name["model"] = "7b"
-
-                tokenizer = AutoTokenizer.from_pretrained('Qwen/Qwen-7B')
-                model = AutoModelForCausalLM.from_pretrained('Qwen/Qwen-7B')
-
-            elif size == "14b":
-
-                friendly_name["model"] = "14b"
-
-                tokenizer = AutoTokenizer.from_pretrained('Qwen/Qwen-14B')
-                model = AutoModelForCausalLM.from_pretrained('Qwen/Qwen-14B')
-
-            elif size == "72b":
-
-                friendly_name["model"] = "72b"
-
-                tokenizer = AutoTokenizer.from_pretrained('Qwen/Qwen-72B')
-                model = AutoModelForCausalLM.from_pretrained('Qwen/Qwen-72B')
-
-        elif model_id == "qwen1.5":
-
-            friendly_name["collection"] = "Qwen 1.5"
-
-            size = Prompt.ask("Zeta-Tool> Alibaba Cloud> Qwen 1.5> Size", choices=["0.5b", "1.8b", "4b", "14b"], default="0.5b")
-
-            if size == "0.5b":
-
-                friendly_name["model"] = "0.5b"
-
-                tokenizer = AutoTokenizer.from_pretrained('Qwen/Qwen1.5-0.5B')
-                model = AutoModelForCausalLM.from_pretrained('Qwen/Qwen1.5-0.5B')
-
-            elif size == "1.8b":
-
-                friendly_name["model"] = "1.8b"
-
-                tokenizer = AutoTokenizer.from_pretrained('Qwen/Qwen1.5-1.8B')
-                model = AutoModelForCausalLM.from_pretrained('Qwen/Qwen1.5-1.8B')
-
-            elif size == "4b":
-
-                friendly_name["model"] = "4b"
-
-                tokenizer = AutoTokenizer.from_pretrained('Qwen/Qwen1.5-4B')
-                model = AutoModelForCausalLM.from_pretrained('Qwen/Qwen1.5-4B')
-
-            elif size == "14b":
-
-                friendly_name["model"] = "14b"
-
-                tokenizer = AutoTokenizer.from_pretrained('Qwen/Qwen1.5-14B')
-                model = AutoModelForCausalLM.from_pretrained('Qwen/Qwen1.5-14B')
-
-            elif size == "32b":
-
-                friendly_name["model"] = "32b"
-
-                tokenizer = AutoTokenizer.from_pretrained('Qwen/Qwen1.5-32B')
-                model = AutoModelForCausalLM.from_pretrained('Qwen/Qwen1.5-32B')
-
-            elif size == "72b":
-
-                friendly_name["model"] = "72b"
-
-                tokenizer = AutoTokenizer.from_pretrained('Qwen/Qwen1.5-72B')
-                model = AutoModelForCausalLM.from_pretrained('Qwen/Qwen1.5-72B')
-
-    elif maker == "local":
+    if maker == "local":
 
         friendly_name["maker"] = "Local"
 
         print("[yellow]WARNING:[/yellow] In Local Mode, Please enter Path of the Directory that Transformers model with full weights, not a quantized version such as GGUF.")
-        trained_model_folder = Prompt.ask("Zeta-Tool> Local> Folder Path", default="./trained_model")
+        trained_model_folder = Prompt.ask("Zeta-Tool> Local> Path", default="./trained_model")
 
         friendly_name["model"] = trained_model_folder
 
@@ -466,7 +64,7 @@ def main():
         friendly_name["maker"] = "Custom"
 
         print("[yellow]WARNING:[/yellow] In Custom Mode, Please enter Path of the Repository on Hugging Face that Transformers model with full weights, not a quantized version such as GGUF.")
-        hugging_face_repo = Prompt.ask("Zeta-Tool> Custom> Hugging Face Repository Path", default="openai-community/gpt2")
+        hugging_face_repo = Prompt.ask("Zeta-Tool> Custom> Path", default="Zeta-DGC/Zeta-2")
 
         friendly_name["model"] = hugging_face_repo
 
@@ -490,12 +88,11 @@ def main():
             return
 
         column_map = {}
-        print("[cyan]Available columns:[/cyan]", list(raw_dataset["train"].features.keys()))
-        column_map["input"] = Prompt.ask(friendly_prompt() + "Which column contains input text?", default="input")
-        column_map["output"] = Prompt.ask(friendly_prompt() + "Which column contains output text?", default="output")
+        column_map["input"] = Prompt.ask(friendly_prompt() + "Which column contains input text?", default="input", choices=list(raw_dataset["train"].features.keys()))
+        column_map["output"] = Prompt.ask(friendly_prompt() + "Which column contains output text?", default="output", choices=list(raw_dataset["train"].features.keys()))
 
         conversations = [
-            f"<user>{ex[column_map['input']]}</user><assistant>{ex[column_map['output']]}</assistant>"
+            f"<|im_start|>user\n{ex[column_map['input']]}<|im_end|>\n<|im_start|>assistant\n{ex[column_map['output']]}<|im_end|>\n"
             for ex in raw_dataset["train"]
         ]
 
@@ -508,27 +105,86 @@ def main():
         for conversation in data:
             convo_text = ""
             for message in conversation:
-                role = str(message['role'])
+                role = str(message['role']).lower()
                 content = str(message['content'])
-                convo_text += f"<{role.lower()}>{content}</{role.lower()}>"
+                convo_text += f"<|im_start|>{role}\n{content}<|im_end|>\n"
+            
             conversations.append(convo_text)
 
     df = pd.DataFrame({'conversation': conversations})
 
     train_dataset = ConversationDataset(df, tokenizer)
 
+    def predict_training_parameters(model, dataset):
+        model_params = sum(p.numel() for p in model.parameters())
+        dataset_size = len(dataset)
+        
+        if model_params < 100_000_000:
+            model_size_category = "small"
+            rec_lr = 5e-5
+            rec_batch = 8
+            rec_epochs = 5
+        elif model_params < 1_000_000_000:
+            model_size_category = "medium"
+            rec_lr = 3e-5
+            rec_batch = 4
+            rec_epochs = 3
+        else:
+            model_size_category = "large"
+            rec_lr = 1e-5
+            rec_batch = 1
+            rec_epochs = 2
+        
+        if dataset_size < 100:
+            rec_epochs = min(10, rec_epochs * 2)
+        elif dataset_size > 10000:
+            rec_epochs = max(1, rec_epochs // 2)
+        
+        estimated_gpu_memory = (model_params * 4 * 2) / (1024**3)
+        
+        if estimated_gpu_memory > 10:
+            rec_batch = max(1, rec_batch // 2)
+            rec_grad_accum = 8
+        elif estimated_gpu_memory > 5:
+            rec_grad_accum = 4
+        else:
+            rec_grad_accum = 2
+            
+        return {
+            "model_size": f"{model_params:,} parameters ({model_size_category} model)",
+            "dataset_size": f"{dataset_size:,} examples",
+            "estimated_gpu_memory": f"~{estimated_gpu_memory:.1f}GB GPU memory required",
+            "recommended_learning_rate": rec_lr,
+            "recommended_batch_size": rec_batch,
+            "recommended_grad_accum": rec_grad_accum,
+            "recommended_epochs": rec_epochs,
+            "model_params": model_params
+        }
+    
+    predictions = predict_training_parameters(model, train_dataset)
+    
+    print(f"\n[bold cyan]Training Parameter Suggestions:[/bold cyan]")
+    for key, value in predictions.items():
+        print(f"  [yellow]{key}:[/yellow] {value}")
+
+    float16 = Prompt.ask(friendly_prompt() + "float16 mode", choices=["fp16", "bf16", "no"], default="bf16")
+    fp16 = float16 == "fp16"
+    bf16 = float16 == "bf16"
+    
     training_args = TrainingArguments(
         output_dir=Prompt.ask(friendly_prompt() + "output_dir (Temporary)", default='./results'),
-        num_train_epochs=Prompt.ask(friendly_prompt() + "num_train_epochs", default=3),
-        per_device_train_batch_size=Prompt.ask(friendly_prompt() + "per_device_train_batch_size", default=1),
-        gradient_accumulation_steps=Prompt.ask(friendly_prompt() + "gradient_accumulation_steps", default=4),
-        learning_rate=Prompt.ask(friendly_prompt() + "learning_rate", default=3e-5),
-        warmup_steps=Prompt.ask(friendly_prompt() + "warmup_steps", default=100),
-        weight_decay=Prompt.ask(friendly_prompt() + "weight_decay", default=0.01),
+        num_train_epochs=float(Prompt.ask(friendly_prompt() + f"num_train_epochs (recommended: {predictions['recommended_epochs']})", default=str(predictions['recommended_epochs']))),
+        per_device_train_batch_size=int(Prompt.ask(friendly_prompt() + f"per_device_train_batch_size (recommended: {predictions['recommended_batch_size']})", default=str(predictions['recommended_batch_size']))),
+        gradient_accumulation_steps=int(Prompt.ask(friendly_prompt() + f"gradient_accumulation_steps (recommended: {predictions['recommended_grad_accum']})", default=str(predictions['recommended_grad_accum']))),
+        learning_rate=float(Prompt.ask(friendly_prompt() + f"learning_rate (recommended: {predictions['recommended_learning_rate']})", default=str(predictions['recommended_learning_rate']))),
+        warmup_steps=int(Prompt.ask(friendly_prompt() + "warmup_steps", default=100)),
+        weight_decay=float(Prompt.ask(friendly_prompt() + "weight_decay", default=0.01)),
         logging_dir=Prompt.ask(friendly_prompt() + "logging_dir", default='./logs'),
-        logging_steps=Prompt.ask(friendly_prompt() + "logging_steps", default=10),
-        save_strategy="no", # Avoid errors that occur during autosave
-        save_total_limit=1
+        logging_steps=int(Prompt.ask(friendly_prompt() + "logging_steps", default=10)),
+        save_strategy="no",
+        save_total_limit=1,
+        fp16=fp16,
+        bf16=bf16
     )
 
     trainer = Trainer(
@@ -536,6 +192,31 @@ def main():
         args=training_args,
         train_dataset=train_dataset,
     )
+
+    model_params = predictions["model_params"]
+
+    steps_per_epoch = len(train_dataset) // (training_args.per_device_train_batch_size * training_args.gradient_accumulation_steps)
+    total_steps = steps_per_epoch * training_args.num_train_epochs
+    
+    time_per_step = 0.5 if model_params < 100_000_000 else (1.0 if model_params < 1_000_000_000 else 2.0)
+    estimated_time_seconds = total_steps * time_per_step
+    
+    hours = int(estimated_time_seconds // 3600)
+    minutes = int((estimated_time_seconds % 3600) // 60)
+    
+    print(f"\n[bold cyan]Training Information:[/bold cyan]")
+    print(f"  [yellow]Steps per epoch:[/yellow] {steps_per_epoch}")
+    print(f"  [yellow]Total steps:[/yellow] {total_steps}")
+    print(f"  [yellow]Estimated training time:[/yellow] {hours}h {minutes}m (rough estimate)")
+    
+    print(f"\nOnce processing is complete, parameters are expected to be updated to your specified values.")
+
+    confirm = Prompt.ask(friendly_prompt() + "Do you want to start training?", choices=['y', 'n'], default='y')
+    if confirm != 'y':
+        print(friendly_prompt() + "Training aborted.")
+        return
+    print(friendly_prompt() + "Training Started!")
+    print(friendly_prompt() + "You can press Ctrl+C to interrupt training.")
 
     try:
         trainer.train()
