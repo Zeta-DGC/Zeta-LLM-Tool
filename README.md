@@ -23,7 +23,7 @@ Fully Open-source LLM Tool
 1. Install Git and Git-LFS
 2. Clone This Repository (Example: `git clone https://github.com/DiamondGotCat/Zeta-Tool.git`)
 3. Check and Install Python and PIP (Recommend: Miniconda)
-4. Install Requiments using PIP (Example: `pip install pandas transformers torch "transformers[torch]" rich datasets` `pip install --upgrade torch`)
+4. Install Requiments using PIP (Example: `pip install pandas transformers torch "transformers[torch]" rich datasets` `pip install --upgrade pandas transformers torch "transformers[torch]" rich datasets`)
 
 ### Training
 1. Run training.py using Python
