@@ -92,7 +92,7 @@ def main():
         column_map["output"] = Prompt.ask(friendly_prompt() + "Which column contains output text?", default="output", choices=list(raw_dataset["train"].features.keys()))
 
         conversations = [
-            f"<|im_start|>user\n{ex[column_map['input']]}<|im_end|>\n<|im_start|>assistant\n{ex[column_map['output']]}<|im_end|>\n"
+            f"<USER>{ex[column_map['input']]}</USER><ASSISTANT>{ex[column_map['output']]}</ASSISTANT>"
             for ex in raw_dataset["train"]
         ]
 
@@ -107,7 +107,7 @@ def main():
             for message in conversation:
                 role = str(message['role']).lower()
                 content = str(message['content'])
-                convo_text += f"<|im_start|>{role}\n{content}<|im_end|>\n"
+                convo_text += f"<{role.upper()}>{content}</{role.upper()}>"
             
             conversations.append(convo_text)
 
