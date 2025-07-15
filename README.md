@@ -1,4 +1,5 @@
-![Zeta Thumbnail](https://github.com/user-attachments/assets/061aaacd-0639-4123-9c7c-397891f03ed9)
+
+<img width="1920" height="1080" alt="Zeta Header Rounded" src="https://github.com/user-attachments/assets/a3d7738f-db85-427d-8928-9b4ab772c7c0" />
 
 > [!TIP]
 > Now you can use a variety of popular models other than OpenAI's GPT2✨
