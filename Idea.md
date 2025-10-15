@@ -43,10 +43,10 @@
 - [ ] Implement federated learning for privacy-preserving training.
 
 ### Contribution Guidelines
-- [ ] Ensure all new features are well-documented.
-- [ ] Follow the coding style and best practices outlined in the repository.
-- [ ] Test new features thoroughly before submitting pull requests.
-- [ ] Engage with the community to discuss feature proposals before implementation.
+- Ensure all new features are well-documented.
+- Follow the coding style and best practices outlined in the repository.
+- Test new features thoroughly before submitting pull requests.
+- Engage with the community to discuss feature proposals before implementation.
 
 This document serves as a roadmap for future improvements to Zeta-Tool. Contributions are welcome!
 
