@@ -1,5 +1,5 @@
 
-<img width="1920" alt="zeta_full_black" src="https://github.com/user-attachments/assets/0c767aed-53a9-4d7b-9fb0-3bdd0e9075c4" />
+<img width="1280" src="https://assets.nercone.dev/images/thumbnail/zeta-llm-tool.png" />
 
 > [!IMPORTANT]
 > I am developing various projects, and since I manage, maintain, and update all of them myself, there may be times when I can't attend to each project individually.
